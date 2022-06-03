@@ -22,10 +22,10 @@ const ProductDetail = () => {
     useEffect(() => {
         if (productId && productId !== "")
             fetchProductDetail();
-            return () => {
-                dispatch(removeSelectedProduct());
-            }
-    }, [productId]);
+        return () => {
+            dispatch(removeSelectedProduct());
+        }
+    });
 
     return (
         <div className="ui grid container">
@@ -38,12 +38,13 @@ const ProductDetail = () => {
                             <div className="ui vertical divider">AND</div>
                             <div className="middle aligned row">
                                 <div className="column lp">
-                                    <img className="ui fluid image" src={image} />
+                                    <img className="ui fluid image" src={image} alt={title} />
                                 </div>
                                 <div className="column rp">
                                     <h1>{title}</h1>
                                     <h2>
-                                        <a className="ui teal tag label">${price}</a>
+                                        {/* <a href="/" className="ui teal tag label">${price}</a> */}
+                                        <span className="ui teal tag label">${price}</span>
                                     </h2>
                                     <h3 className="ui brown block header">{category}</h3>
                                     <p>{description}</p>
