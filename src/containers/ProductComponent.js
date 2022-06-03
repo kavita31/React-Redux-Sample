@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from 'semantic-ui-react'
-
+ 
 const ProductComponent = () => {
     const products = useSelector((state) => state.allProducts.products);
     const renderList = products.map((product) => {
