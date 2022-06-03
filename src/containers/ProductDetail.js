@@ -10,22 +10,20 @@ const ProductDetail = () => {
     const { image, title, price, category, description } = product;
     const { productId } = useParams();
     const dispatch = useDispatch();
-    console.log("product", product);
-
-    const fetchProductDetail = async () => {
-        const response = await axios.get(`https://fakestoreapi.com/products/${productId}`).catch((error) => {
-            console.log("error", error);
-        });
-        dispatch(selectedProduct(response.data));
-    }
 
     useEffect(() => {
+        const fetchProductDetail = async () => {
+            const response = await axios.get(`https://fakestoreapi.com/products/${productId}`).catch((error) => {
+                console.log("error", error);
+            });
+            dispatch(selectedProduct(response.data));
+        }
         if (productId && productId !== "")
             fetchProductDetail();
         return () => {
             dispatch(removeSelectedProduct());
         }
-    });
+    },[productId,dispatch]);
 
     return (
         <div className="ui grid container">

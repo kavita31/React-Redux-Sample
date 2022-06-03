@@ -8,17 +8,17 @@ const ProductListing = () => {
    // const products = useSelector((state) => state);
     const dispatch = useDispatch();
 
-    const fetchProducts = async () => {
-        const response = await axios.get("https://fakestoreapi.com/products").catch((error) => {
-            console.log("error", error)
-        });
-        dispatch(setProducts(response.data));
-        console.log("response", response.data);
-    };
+    
 
     useEffect(() => {
+        const fetchProducts = async () => {
+            const response = await axios.get("https://fakestoreapi.com/products").catch((error) => {
+                console.log("error", error)
+            });
+            dispatch(setProducts(response.data));
+        };
         fetchProducts();
-    });
+    },[dispatch]);
 
     return (
         <div className="ui grid container">
